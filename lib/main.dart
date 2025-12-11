@@ -54,7 +54,10 @@ class MyApp extends StatelessWidget {
         ? ThemeMode.light
         : themeProvider.mode == 'dark'
         ? ThemeMode.dark
+        : themeProvider.mode == 'system'
+        ? ThemeMode.system
         : ThemeMode.system;
+
     return MaterialApp(
       title: 'Flutter Demo',
 
@@ -67,7 +70,7 @@ class MyApp extends StatelessWidget {
       //   '/home': (context) => WidgetTree(),
       // },
       debugShowCheckedModeBanner: false,
-      theme: lightMode,
+      theme: themeMode == ThemeMode.light ? lightMode : darkMode,
       darkTheme: darkMode,
       themeMode: themeMode,
       home: initialUser == null ? LandingPage() : WidgetTree(),
